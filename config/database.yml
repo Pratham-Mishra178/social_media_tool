@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: 1234567890
+  pool: 5
+
+development:
+  <<: *default
+  database: social_media_tool_development
+
+test:
+  <<: *default
+  database: social_media_tool_test
+
+production:
+  <<: *default
+  database: social_media_tool_production
