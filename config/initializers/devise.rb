@@ -10,8 +10,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Configure OmniAuth for LinkedIn with hardcoded credentials
   config.omniauth :linkedin, 
-                  '86mton83xfu2u7',  # Your LinkedIn Client ID
-                  'WPL_AP1.M6DBTJuxvh8Rgbyf.q+0yHg==',  # Your LinkedIn Client Secret
+                  '86mton83xfu2u7',  # LinkedIn Client ID
+                  'WPL_AP1.M6DBTJuxvh8Rgbyf.q+0yHg==',  # LinkedIn Client Secret
                   scope: 'r_liteprofile r_emailaddress w_member_social'
 
   # Define a custom prefix for OmniAuth routes
@@ -21,7 +21,7 @@ Devise.setup do |config|
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
   config.skip_session_storage = [:http_auth]
-  
+
   # ==> Token Configuration
   config.stretches = Rails.env.test? ? 1 : 12
   config.reset_password_within = 6.hours

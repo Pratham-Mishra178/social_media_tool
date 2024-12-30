@@ -1,44 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>
-      <%= content_for?(:title) ? yield(:title) : "My Professional Web App" %>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Scheduler</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <!-- Stylesheets -->
-    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
-
-    <!-- Favicon and Icons -->
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   </head>
-
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %></li>
-          <% else %>
-            <li><%= link_to "Sign In with LinkedIn", user_linkedin_omniauth_authorize_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
+    <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
-
-    <footer>
-      <p>&copy; <%= Time.now.year %> My Professional Web App</p>
-    </footer>
   </body>
 </html>

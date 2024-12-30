@@ -1,9 +1,17 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import { Turbo } from "@hotwired/turbo-rails";
-
-import "controllers"
 // app/javascript/application.js
-import Rails from "@rails/ujs";
-Rails.start();
+import { Turbo } from "turbo-rails"
+import "controllers"  // This imports your Stimulus controllers if you are using them
+// Entry point for the build script in your package.json
+import "@hotwired/turbo-rails";
+import { Application } from "@hotwired/stimulus";
+import { definitionsFromContext } from "@hotwired/stimulus-loading";
 
+// Load all Stimulus controllers
+const application = Application.start();
+const context = require.context("./controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));
 
+// Import Trix editor and ActionText for rich text
+import "trix";
+import "@rails/actiontext";

@@ -1,6 +1,7 @@
+# config/routes.rb
 Rails.application.routes.draw do
   # Set the landing page as the root
-  root 'home#index'
+  root 'pages#login'
 
   # Devise routes for user authentication, including OmniAuth callback handling
   devise_for :users, controllers: {
@@ -8,8 +9,8 @@ Rails.application.routes.draw do
   }
 
   # Basic dashboard route
-  get 'dashboard', to: 'posts#index'
+  get 'dashboard', to: 'posts#dashboard'
 
-  # Optional: If you want to have a route for the user's profile after login
-  # get 'profile', to: 'users#show', as: 'profile'
+  # Post creation routes
+  resources :posts, only: [:index, :new, :create]
 end

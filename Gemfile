@@ -74,3 +74,7 @@ gem 'sidekiq'
 gem "omniauth-linkedin", "~> 0.2.0"
 
 gem "omniauth-twitter", "~> 1.4"
+
+gem 'webpacker'
+
+gem "tailwindcss-rails"

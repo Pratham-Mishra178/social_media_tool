@@ -12,6 +12,8 @@ module SocialMediaTool
     config.load_defaults 8.0
     config.active_job.queue_adapter = :sidekiq
 
+    # Add the builds directory to the asset paths for Propshaft
+    config.assets.paths << Rails.root.join("app", "assets", "builds")
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

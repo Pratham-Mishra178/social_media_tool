@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Social Media Tool</title>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-blue-600 text-white px-6 py-8">
+      <h2 class="text-2xl font-semibold">Dashboard</h2>
+      <ul class="mt-6 space-y-4">
+        <li><%= link_to 'Home', root_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+        <li><%= link_to 'Settings', settings_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+        <li><%= link_to 'Log Out', logout_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-3xl font-semibold text-gray-900">Welcome back, User!</h1>
+        <p class="mt-4 text-lg text-gray-700">Here's a summary of your activity:</p>
+
+        <!-- Dashboard Content -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Example Card -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-medium text-gray-800">Social Media Stats</h2>
+            <p class="mt-4 text-gray-600">Track your social media performance.</p>
+          </div>
+          <!-- More Cards can go here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

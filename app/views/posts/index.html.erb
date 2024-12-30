@@ -1,2 +1,18 @@
-<h1>Dashboard</h1>
-<p>Welcome to your dashboard. Here, you can create and schedule posts for LinkedIn.</p>
+<!-- app/views/posts/index.html.erb -->
+<h1>Welcome to Your Dashboard</h1>
+<h2>Your Scheduled Posts</h2>
+
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <strong>Content:</strong> <%= post.content %> <br>
+        <strong>Scheduled At:</strong> <%= post.scheduled_at %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no scheduled posts.</p>
+<% end %>
+
+<%= link_to 'Create a New Post', new_post_path, class: 'btn btn-primary' %>
