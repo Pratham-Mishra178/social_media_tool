@@ -1,31 +1,42 @@
-<!-- app/views/posts/new.html.erb -->
-<h1>Create a New Post</h1>
+<h1 class="text-3xl font-bold text-gray-900 mb-4">Create a New Post</h1>
 
-<%= form_with model: @post, url: posts_path, local: true do |form| %>
+<%= form_with model: @post, url: posts_path, local: true, class: "space-y-6" do |form| %>
   <% if @post.errors.any? %>
-    <div class="errors">
-      <h2>There were errors in your submission:</h2>
+    <div class="errors mb-4">
+      <h2 class="text-lg font-bold text-red-600">There were errors in your submission:</h2>
       <ul>
         <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="text-red-600"><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div>
-    <%= form.label :content %>
-    <%= form.text_area :content, rows: 4 %>
+    <%= form.label :content, class: "text-gray-700" %>
+    <%= form.text_area :content, rows: 4, class: "w-full py-2 px-4 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
   <div>
-    <%= form.label :scheduled_at %>
-    <%= form.datetime_select :scheduled_at %>
+    <%= form.label :scheduled_at, class: "text-gray-700" %>
+    <%= form.datetime_select :scheduled_at, class: "w-full py-2 px-4 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+  </div>
+
+  <!-- Image Upload -->
+  <div>
+    <%= form.label :image, "Upload Image (optional)", class: "text-gray-700" %>
+    <%= form.file_field :image, class: "w-full py-2 px-4 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+  </div>
+
+  <!-- Video Upload -->
+  <div>
+    <%= form.label :video, "Upload Video (optional)", class: "text-gray-700" %>
+    <%= form.file_field :video, class: "w-full py-2 px-4 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
   <div>
-    <%= form.submit 'Create Post' %>
+    <%= form.submit 'Create Post', class: "w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 <% end %>
 
-<%= link_to 'Back to Dashboard', dashboard_path %>
+<%= link_to 'Back to Dashboard', dashboard_path, class: "mt-4 block text-center text-blue-600 hover:underline" %>

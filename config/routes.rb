@@ -1,4 +1,3 @@
-# config/routes.rb
 Rails.application.routes.draw do
   # Set the landing page as the root
   root 'pages#login'
@@ -8,9 +7,13 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  # Basic dashboard route
-  get 'dashboard', to: 'posts#dashboard'
+  # Settings route
+  get 'settings', to: 'settings#show', as: 'settings'
 
+  # Dashboard route
+  get 'dashboard', to: 'pages#dashboard', as: 'dashboard' # Updated to use PagesController
+  get 'dashboard', to: 'pages#dashboard'
+  get 'posts_dashboard', to: 'posts#dashboard'
   # Post creation routes
   resources :posts, only: [:index, :new, :create]
 end

@@ -1,17 +1,24 @@
-<div class="auth-form-container">
-  <h2>Login</h2>
-  <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
+<div class="auth-form-container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Login</h2>
+  <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true, html: { class: 'space-y-6' }) do |f| %>
+    <% if resource.errors.any? %>
+      <div class="bg-red-100 text-red-700 p-4 rounded-md">
+        <p><%= resource.errors.full_messages.join(', ') %></p>
+      </div>
+    <% end %>
     <div class="form-group">
-      <%= f.label :email, 'Email' %>
-      <%= f.email_field :email, class: 'form-control', autofocus: true %>
+      <%= f.label :email, 'Email', class: 'block text-sm font-medium text-gray-700' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
     </div>
     <div class="form-group">
-      <%= f.label :password, 'Password' %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, 'Password', class: 'block text-sm font-medium text-gray-700' %>
+      <%= f.password_field :password, class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
     </div>
-    <div class="form-group">
-      <%= f.submit 'Login', class: 'btn btn-primary' %>
+    <div class="form-group text-center">
+      <%= f.submit 'Login', class: 'btn-primary w-full px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700' %>
     </div>
   <% end %>
-  <%= link_to 'Forgot your password?', new_password_path(resource_name), class: 'forgot-password' %>
+  <div class="text-center mt-4">
+    <%= link_to 'Forgot your password?', new_password_path(resource_name), class: 'text-blue-600 hover:text-blue-800' %>
+  </div>
 </div>

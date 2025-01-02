@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Social Media Tool</title>
+  <title>Posts Dashboard - Social Media Tool</title>
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
 </head>
 <body class="bg-gray-100 font-sans">
-
   <div class="flex">
     <!-- Sidebar -->
     <div class="w-64 h-screen bg-blue-600 text-white px-6 py-8">
@@ -16,28 +14,60 @@
       <ul class="mt-6 space-y-4">
         <li><%= link_to 'Home', root_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
         <li><%= link_to 'Settings', settings_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
-        <li><%= link_to 'Log Out', logout_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+        <li><%= link_to 'Posts', posts_dashboard_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
       </ul>
     </div>
+
+    <% content_for :sidebar do %>
+  <!-- Sidebar -->
+  <div class="w-64 h-screen bg-blue-600 text-white px-6 py-8">
+    <h2 class="text-2xl font-semibold">Dashboard</h2>
+    <ul class="mt-6 space-y-4">
+      <li><%= link_to 'Home', root_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+      <li><%= link_to 'Settings', settings_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+      <li><%= link_to 'Posts', posts_dashboard_path, class: 'block text-lg hover:bg-blue-500 px-3 py-2 rounded-md' %></li>
+    </ul>
+  </div>
+<% end %>
 
     <!-- Main Content -->
     <div class="flex-1 p-8">
       <div class="bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-3xl font-semibold text-gray-900">Welcome back, User!</h1>
-        <p class="mt-4 text-lg text-gray-700">Here's a summary of your activity:</p>
+        <h1 class="text-3xl font-semibold text-gray-900">Manage Your Posts</h1>
+        <p class="mt-4 text-lg text-gray-700">Here's a summary of your scheduled posts:</p>
 
         <!-- Dashboard Content -->
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Example Card -->
+          <!-- Scheduled Posts -->
           <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-medium text-gray-800">Social Media Stats</h2>
-            <p class="mt-4 text-gray-600">Track your social media performance.</p>
+            <h2 class="text-xl font-medium text-gray-800">Scheduled Posts</h2>
+            <% if @posts.present? && @posts.any? %>
+              <ul class="mt-4 space-y-4">
+                <% @posts.each do |post| %>
+                  <li class="bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-gray-700"><%= post.title %></h3>
+                    <p class="text-gray-600"><%= post.content %></p>
+                    <p class="text-sm text-gray-500">Scheduled for: <%= post.scheduled_at.strftime("%Y-%m-%d %H:%M") %></p>
+                    <% if post.image.attached? %>
+                      <div class="mt-2">
+                        <%= image_tag(post.image, class: 'rounded-md w-full h-auto') %>
+                      </div>
+                    <% end %>
+                    <% if post.video.attached? %>
+                      <div class="mt-2">
+                        <%= video_tag(post.video, controls: true, class: 'rounded-md w-full h-auto') %>
+                      </div>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p class="text-gray-600">You have no scheduled posts yet.</p>
+            <% end %>
           </div>
-          <!-- More Cards can go here -->
         </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>

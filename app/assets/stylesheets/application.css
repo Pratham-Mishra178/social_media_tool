@@ -3,8 +3,80 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f7fc;
+  background: linear-gradient(120deg, #4CAF50, #007BFF);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.auth-form-container {
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.auth-form-container h1 {
+  font-size: 26px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.dashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container h1 {
+  font-size: 28px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.post-item {
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h3 {
+  font-size: 20px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.post-item p {
+  font-size: 14px;
+  color: #666666;
+}
+
 
 h1, h2 {
   font-size: 24px;
@@ -70,6 +142,7 @@ nav ul li a {
   text-decoration: underline;
 }
 
+/* Auth Form Styles */
 .auth-form-container {
   width: 300px;
   margin: 50px auto;
@@ -93,12 +166,74 @@ nav ul li a {
 
 /* Dashboard & Post Styles */
 .dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 85%;
+}
+
+.dashboard-header {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+}
+
+.card-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
 }
 
 .post-list {
-  margin-top: 20px;
+  margin-top: 30px;
+  width: 100%;
   padding: 0;
 }
 
@@ -108,4 +243,54 @@ nav ul li a {
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.post-item p {
+  font-size: 14px;
+  color: #777;
+}
+
+.post-item .scheduled-time {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.post-item .post-actions {
+  margin-top: 10px;
+}
+
+.post-item .post-actions a {
+  text-decoration: none;
+  color: #007BFF;
+  margin-right: 10px;
+}
+
+.post-item .post-actions a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout for Dashboard */
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    width: 95%;
+  }
+
+  .post-list {
+    width: 100%;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .card-button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }

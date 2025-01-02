@@ -78,3 +78,9 @@ gem "omniauth-twitter", "~> 1.4"
 gem 'webpacker'
 
 gem "tailwindcss-rails"
+
+gem 'sass-rails', '>= 6'
+gem 'jquery-rails'  # For jQuery support
+gem 'dotenv-rails', groups: [:development, :test]  # To manage environment variables
+
+gem 'sprockets', '~> 4.0'
