@@ -3,30 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "Social Media Scheduler" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Scheduler" %></title>
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "dashboard", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen flex items-center justify-center">
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col">
 
-  <!-- Wrapper to center the content -->
-  <div class="w-full max-w-3xl">
-    <% if content_for?(:navbar) %>
-      <%= yield :navbar %>
-    <% end %>
+  <!-- Navbar -->
+  <header style="background-color: #2563eb; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+  <div style="max-width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1em 1em;">
+    <!-- Logo -->
+    <a href="<%= root_path %>" class="nav-link-nohover">
+    <h1 style="font-size: 24px; font-weight: bold; letter-spacing: 1px;">SCHEDULER</h1>
+    </a>
 
-    <% if content_for?(:sidebar) %>
-      <div class="flex">
-        <%= yield :sidebar %>
-        <main class="flex-1 p-8">
-          <%= yield %>
-        </main>
-      </div>
-    <% else %>
-      <main class="text-center">
-        <%= yield %>
-      </main>
-    <% end %>
+    <!-- Navbar Links -->
+    <nav style="display: flex; gap: 16px;">
+      <a href="<%= root_path %>" class="nav-link">Home</a>
+      <a href="<%= dashboard_path %>" class="nav-link">Dashboard</a>
+      <a href="<%= destroy_user_session_path %>" data-method="delete" class="nav-link">Logout</a>
+    </nav>
   </div>
+</header>
+
+
+
+
+
+
+
+  <!-- Main Content -->
+  <main class="flex-grow" style="
+    justify-content: center;
+    align-items: center;
+    display: flex;
+">
+    <%= yield %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; <%= Time.now.year %> Scheduler. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for Mobile Menu Toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("menu");
+      if (menuToggle && menu) {
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

@@ -15,3 +15,14 @@ application.load(definitionsFromContext(context));
 // Import Trix editor and ActionText for rich text
 import "trix";
 import "@rails/actiontext";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+});
+

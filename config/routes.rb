@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard' # Updated to use PagesController
   get 'dashboard', to: 'pages#dashboard'
   get 'posts_dashboard', to: 'posts#dashboard'
+  delete 'logout', to: 'sessions#destroy', as: :logout
   # Post creation routes
   resources :posts, only: [:index, :new, :create]
 end

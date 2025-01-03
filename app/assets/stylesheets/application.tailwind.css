@@ -2,12 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .nav-link {
+    @apply text-white text-lg font-medium px-2 py-1 hover:underline hover:text-gray-300 transition duration-200;
   }
+
+  /* Footer Styles */
+  footer p {
+    @apply text-sm text-gray-400;
+  }a
+
+  .hover\:text-gray-200:hover {
+    color: #e5e5e5;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700;
+  }
+
+  .dashboard-container {
+    @apply max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg;
+  }
+
+  .post-item {
+    @apply p-4 mb-4 bg-gray-100 rounded-md shadow-sm;
+  }
+  
 }
 
-*/
+/* Hover effects for navbar links */
+nav a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+/* Transition for the mobile menu */
+#mobile-menu {
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* Hamburger menu animation */
+#menu-btn svg {
+  transition: transform 0.3s ease;
+}

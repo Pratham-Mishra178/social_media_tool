@@ -1,9 +1,8 @@
-<!-- Main Content -->
-  <div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="max-w-md w-full p-8 rounded-lg shadow-lg bg-white bg-opacity-50 backdrop-blur-md border border-gray-200">
-      <h1 class="text-3xl font-bold text-gray-900 mb-4">Welcome to Scheduler App</h1>
-      <%= button_to "Login with Linkedin", dashboard_path, method: :get, class: "w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
-    </div>
-  </div>
-
-
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 text-center">
+  <h1 class="text-2xl font-bold mb-4 text-gray-800">Welcome to Scheduler App</h1>
+  <p class="text-gray-600 mb-6">
+    Manage your social media accounts efficiently and schedule posts with ease.
+    Plan ahead and make the most of your social presence.
+  </p>
+  <%= link_to 'Login with LinkedIn', user_linkedin_omniauth_authorize_path, class: 'bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600' %>
+</div>
